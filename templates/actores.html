@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <br>
+  <h1>Actores</h1>
+  <br>
+
+  {% if actors %}
+    <table>
+      <tr style="text-align: center;">
+        <th>Nombre</th>
+        <th>Fecha de nacimiento</th>
+        <th>Filmografia</th>
+      </tr>
+
+      {% for actor in actors %}
+        <tr>
+          <td>{{actor.nombre}}</td>
+          <td>{{actor.fecha_nacimiento}}</td>
+          <td>
+            {% if movies_per_actor %}
+                <a>{{movies_per_actor|get_value:actor.nombre}}</a>
+            {% else %}
+              Ninguna pelicula registrada.
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+
+    </table>
+
+  {% else %}
+    <a>No se encontraron actores registrados.</a>
+    <a>Intente en otro momento.</a>
+  {% endif %}
+
+{% endblock %}

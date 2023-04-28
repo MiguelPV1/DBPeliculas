@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <br>
+  <h1>¡BIENVENIDO A LA BASE DE DATOS DE PELICULAS!</h1>
+  <p>
+    Esta página esta dedicada a prensetar los datos mas relevantes de todos los 
+    <a href="{% url 'actores' %}">
+      Actores
+    </a>
+    que se encuentran registrados en nuestra base de datos.
+  </p>
+
+  <p>
+    O bien para que puedas averiguar que peliculas se estrenaron en los años:
+  </p>
+
+  {% if movies_years %}
+    <ul>
+      {% for movie in movies_years %}
+        <li>
+          <a href="{% url 'pelicula' movie %}">
+            {{movie}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    UPSSS! para que no hay peliculas registradas.
+  {% endif %}
+
+{% endblock %}

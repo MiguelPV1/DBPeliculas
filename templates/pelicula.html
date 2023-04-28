@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <br>
+  <h1>Películas de {{year}}</h1>
+  <br>
+
+  {% if movies %}
+    <ul>
+      {% for movie in movies %}
+        <li>
+          <a>{{movie.nombre}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    
+  {% else %}
+    <a>No se encontraron peliculas registradas del año {{year}}.</a>
+    <a>Intente con otro año.</a>
+  {% endif %}
+
+{% endblock %}
